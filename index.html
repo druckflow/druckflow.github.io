@@ -3,28 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>druckflow - Games & Apps</title>
+    <title>druckflow</title>
+    <!-- Tailwind CSS CDN für schnelles Styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font für modernes Aussehen -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Eigene CSS-Datei für zusätzliche Stile -->
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Grundlegende Stile für die Seite */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a1a1a; /* Dunkler Hintergrund */
+            color: #e0e0e0; /* Helle Textfarbe */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            justify-content: space-between; /* Verteilt Header, Main, Footer */
+        }
+        /* Custom styles for Epic Store-like button effects */
+        .epic-button {
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            transform: scale(1);
+        }
+        .epic-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            transition: all 0.7s ease-out;
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
+            border-radius: 50%;
+        }
+        .epic-button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(100, 100, 255, 0.3);
+        }
+        .epic-button:hover::before {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+        .epic-button:active {
+            transform: scale(0.98);
+        }
+    </style>
 </head>
-<body>
-    <header>
-        <h1>Willkommen bei druckflow</h1>
-        <nav>
-            <a href="impressum.html">Impressum</a> |
-            <a href="datenschutz.html">Datenschutz</a> |
-            <a href="kontakt.html">Kontakt</a>
-        </nav>
+<body class="antialiased">
+
+    <!-- Header Sektion -->
+    <header class="bg-gray-900 py-4 shadow-lg">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <h1 class="text-3xl font-bold text-white tracking-wide">
+                druckflow
+            </h1>
+            <nav>
+                <!-- Beispiel für zukünftige Navigationslinks im Header -->
+                <!-- <a href="#" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Über Uns</a> -->
+            </nav>
+        </div>
     </header>
 
-    <main>
-        <section class="buttons">
-            <a href="games/index.html" class="button">Unsere Games</a>
-            <a href="apps/index.html" class="button">Unsere Apps</a>
-        </section>
+    <!-- Hauptinhalt Sektion -->
+    <main class="flex-grow flex items-center justify-center p-4">
+        <div class="text-center">
+            <h2 class="text-5xl md:text-6xl font-extrabold text-white mb-10 leading-tight">
+                Entdecke unsere Welten
+            </h2>
+            <p class="text-xl md:text-2xl text-gray-400 mb-12 max-w-2xl mx-auto">
+                Tauche ein in eine Vielfalt an Spielen und nützlichen Anwendungen.
+            </p>
+
+            <div class="flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-8 justify-center">
+                <!-- Schaltfläche für Games -->
+                <a href="games/index.html" class="epic-button
+                   bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700
+                   text-white text-3xl font-bold py-8 px-16 rounded-2xl shadow-xl
+                   flex items-center justify-center transition-all duration-300 ease-in-out
+                   transform hover:-translate-y-1 hover:scale-105">
+                    Games
+                </a>
+
+                <!-- Schaltfläche für Apps -->
+                <a href="apps/index.html" class="epic-button
+                   bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600
+                   text-white text-3xl font-bold py-8 px-16 rounded-2xl shadow-xl
+                   flex items-center justify-center transition-all duration-300 ease-in-out
+                   transform hover:-translate-y-1 hover:scale-105">
+                    Apps
+                </a>
+            </div>
+        </div>
     </main>
 
-    <footer>
-        <p>&copy; 2025 druckflow. Alle Rechte vorbehalten.</p>
+    <!-- Footer Sektion -->
+    <footer class="bg-gray-900 py-6 text-gray-400 text-center text-sm shadow-inner mt-8">
+        <div class="container mx-auto px-4">
+            <p>&copy; 2025 druckflow. Alle Rechte vorbehalten.</p>
+            <nav class="mt-4">
+                <ul class="flex justify-center space-x-6">
+                    <li><a href="impressum.html" class="hover:text-white transition-colors duration-200">Impressum</a></li>
+                    <li><a href="datenschutz.html" class="hover:text-white transition-colors duration-200">Datenschutzerklärung</a></li>
+                    <li><a href="kontakt.html" class="hover:text-white transition-colors duration-200">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
     </footer>
+
 </body>
 </html>
