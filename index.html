@@ -4,22 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>druckflow</title>
-    <!-- Tailwind CSS CDN für schnelles Styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Inter Font für modernes Aussehen -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <!-- Eigene CSS-Datei für zusätzliche Stile -->
     <link rel="stylesheet" href="css/style.css">
     <style>
         /* Grundlegende Stile für die Seite */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #1a1a1a; /* Dunkler Hintergrund */
+            background-color: #1a1a1a; /* Dunkler Hintergrund als Fallback */
             color: #e0e0e0; /* Helle Textfarbe */
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            justify-content: space-between; /* Verteilt Header, Main, Footer */
+            justify-content: space-between;
+            /* Hintergrundbild über der Hintergrundfarbe */
+            background-image: url('img/background.png'); /* Pfad zu deinem Hintergrundbild */
+            background-size: cover; /* Bild deckt den gesamten Bereich ab */
+            background-position: center; /* Bild zentriert */
+            background-repeat: no-repeat; /* Bild wird nicht wiederholt */
+            background-attachment: fixed; /* Hintergrund scrollt nicht mit */
+        }
+        /* Überlagerung für bessere Lesbarkeit des Textes über dem Hintergrundbild */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.2); /* Dunkle, leicht transparente Überlagerung */
+            z-index: -1; /* Hinter dem Inhalt */
         }
         /* Custom styles for Epic Store-like button effects */
         .epic-button {
@@ -52,35 +66,41 @@
         .epic-button:active {
             transform: scale(0.98);
         }
+
+        /* Stil für das Logo */
+        .header-logo {
+            height: 60px; /* Oder eine andere passende Höhe */
+            /* margin-bottom: 0.5rem; wird durch mr-3 in flex-Kontext ersetzt */
+            max-width: 100%; /* Stellt sicher, dass das Logo auf kleinen Bildschirmen passt */
+            object-fit: contain; /* Passt das Bild an ohne es zu verzerren */
+        }
     </style>
 </head>
-<body class="antialiased">
+<body class="antialiased relative">
 
-    <!-- Header Sektion -->
-    <header class="bg-gray-900 py-4 shadow-lg">
+    <header class="bg-gray-900 bg-opacity-80 py-4 shadow-lg">
         <div class="container mx-auto px-4 flex justify-between items-center">
-            <h1 class="text-3xl font-bold text-white tracking-wide">
-                druckflow
-            </h1>
+            <div class="flex items-center">
+                <img src="img/Logo_druckflow_V1.png" alt="Portal Logo" class="header-logo mr-3">
+                <h1 class="text-3xl font-bold text-white tracking-wide">
+                    𝓭𝓻𝓾𝓬𝓴𝓯𝓵𝓸𝔀 - 𝓽𝓱𝓮 𝓕𝓾𝓽𝓾𝓻𝓮
+                </h1>
+            </div>
             <nav>
-                <!-- Beispiel für zukünftige Navigationslinks im Header -->
-                <!-- <a href="#" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Über Uns</a> -->
-            </nav>
+                </nav>
         </div>
     </header>
 
-    <!-- Hauptinhalt Sektion -->
-    <main class="flex-grow flex items-center justify-center p-4">
-        <div class="text-center">
+    <main class="flex-grow flex items-center justify-center p-4 z-10">
+        <div class="text-center bg-gray-900 bg-opacity-30 p-8 rounded-xl shadow-2xl">
             <h2 class="text-5xl md:text-6xl font-extrabold text-white mb-10 leading-tight">
                 𝓕𝓾𝓽𝓾𝓻𝓮 𝓕𝓵𝓸𝔀
             </h2>
             <p class="text-xl md:text-2xl text-gray-400 mb-12 max-w-2xl mx-auto">
-                Tauche ein in eine Vielfalt an Spielen und nützlichen Anwendungen.
+                Tauche in die Inspiration selbst ein.
             </p>
 
             <div class="flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-8 justify-center">
-                <!-- Schaltfläche für Games -->
                 <a href="games/index.html" class="epic-button
                    bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700
                    text-white text-3xl font-bold py-8 px-16 rounded-2xl shadow-xl
@@ -89,7 +109,6 @@
                     Games
                 </a>
 
-                <!-- Schaltfläche für Apps -->
                 <a href="apps/index.html" class="epic-button
                    bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600
                    text-white text-3xl font-bold py-8 px-16 rounded-2xl shadow-xl
@@ -101,10 +120,9 @@
         </div>
     </main>
 
-    <!-- Footer Sektion -->
-    <footer class="bg-gray-900 py-6 text-gray-400 text-center text-sm shadow-inner mt-8">
+    <footer class="bg-gray-900 bg-opacity-80 py-6 text-gray-400 text-center text-sm shadow-inner mt-8 z-10">
         <div class="container mx-auto px-4">
-            <p>&copy; 2025 druckflow. Alle Rechte vorbehalten.</p>
+            <p>&copy; 2025 druckflow / Alle Rechte vorbehalten.</p>
             <nav class="mt-4">
                 <ul class="flex justify-center space-x-6">
                     <li><a href="impressum.html" class="hover:text-white transition-colors duration-200">Impressum</a></li>
